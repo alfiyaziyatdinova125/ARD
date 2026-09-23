@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ================== БАЗА ================== */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #8bbe924f;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================== ЛОГОТИП ================== */
+.custom-menu-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.brand-logo {
+    height: 36px;
+    width: auto;
+    display: block; 
+}
+@media (max-width: 62em) {
+    .brand-logo {
+        height: 30px;
+    }
+    .brand-text {
+        font-size: 1.2em;
+    }
+}
+
+.brand-text {
+    display: block;
+    font-weight: 700;
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+    color: white;
+    line-height: 1;             /* чтобы текст не «прыгал» относительно логотипа */
+}
+
+/* ================== МЕНЮ ================== */
+.custom-menu-wrapper {
+    background-color: #4d8a56;
+    margin-bottom: 2.5em;
+    white-space: nowrap;
+    position: relative;
+}
+
+.custom-menu {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+}
+
+.custom-menu-wrapper nav.custom-menu {
+    display: inline-block;
+}
+
+.custom-menu .pure-menu-link,
+.custom-menu .pure-menu-heading {
+    color: white;
+}
+
+.custom-menu .pure-menu-link:hover,
+.custom-menu .pure-menu-heading:hover {
+    background-color: transparent;
+}
+
+.custom-menu-top {
+    position: relative;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.custom-menu-brand {
+    display: flex;
+    align-items: center;        /* выравнивание по вертикали (по центру) */
+    justify-content: center;    /* выравнивание по горизонтали (по центру меню) */
+    gap: 0.2em;                 /* отступ между логотипом и текстом */
+    text-align: center;
+    position: relative;
+    line-height: 1;             /* убираем лишнюю высоту строки */
+    text-decoration: none;
+}
+
+.custom-menu-toggle {
+    width: 44px;
+    height: 44px;
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    display: none;
+}
+
+.custom-menu-toggle .bar {
+    background-color: white;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 22px;
+    right: 12px;
+    transition: all 0.5s;
+}
+
+.custom-menu-toggle .bar:first-child {
+    transform: translateY(-6px);
+}
+
+.custom-menu-toggle.x .bar {
+    transform: rotate(45deg);
+}
+
+.custom-menu-toggle.x .bar:first-child {
+    transform: rotate(-45deg);
+}
+
+.custom-menu-screen {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.5s;
+    height: 3em;
+    width: 70em;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.custom-menu-tucked .custom-menu-screen {
+    transform: translateY(-44px);
+    opacity: 0;
+}
+.pure-menu-link.active {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.pure-menu-link.active:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 62em) {
+    .custom-menu {
+        display: block;
+    }
+    .custom-menu-toggle {
+        display: block;
+    }
+    .custom-menu-bottom {
+        position: absolute;
+        width: 100%;
+        border-top: 1px solid #eee;
+        background-color: #4d8a56;
+        z-index: 100;
+    }
+    .custom-menu-bottom .pure-menu-link {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.5s;
+    }
+    .custom-menu-bottom.custom-menu-tucked .pure-menu-link {
+        transform: translateX(-140px);
+        opacity: 0;
+    }
+    .pure-menu-horizontal.custom-menu-tucked {
+        z-index: -1;
+        top: 45px;
+        position: absolute;
+        overflow: hidden;
+        height: 0;
+        visibility: hidden;
+    }
+    .custom-menu-wrapper {
+        margin-bottom: 0;
+    }
+    .custom-menu-wrapper:has(.custom-menu-bottom:not(.custom-menu-tucked)) {
+        margin-bottom: 2.5em;
+    }
+}
+
+/* ================== HERO ================== */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 480px;              /* высота баннера */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    background-image: url('/img/hero.png');   /* ← своя картинка */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+/* Тёмный оверлей поверх картинки, чтобы текст читался */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);   /* затемнение 45% */
+    z-index: 0;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;                     /* выше оверлея */
+    max-width: 800px;
+    padding: 2em;
+}
+
+.hero-title {
+    font-size: 3em;
+    line-height: 1.15;
+    margin: 0 0 0.5em;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin: 0 0 1.5em;
+    color: #f0f0f0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 0.8em 1.8em;
+    background-color: #4d8a56;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.hero-btn:hover {
+    background-color: #3d6e44;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 62em) {
+    .hero {
+        background-attachment: scroll;
+    }
+}
+
+/* Адаптив */
+@media (max-width: 62em) {
+    .hero {
+        min-height: 380px;
+    }
+    .hero-title {
+        font-size: 2em;
+    }
+    .hero-subtitle {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 40em) {
+    .hero {
+        min-height: 320px;
+    }
+    .hero-title {
+        font-size: 1.6em;
+    }
+}
+
+/* ================== РАСКЛАДКА С САЙДБАРОМ ================== */
+.layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+    color: black;
+}
+
+.main img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    margin: 1.5em 0;
+}
+
+/* ================== БЛОК "ЧТО МЫ УЗНАЕМ" ================== */
+.page-info {
+    margin-top: 2em;
+    padding: 1.5em 2em;
+    background-color: rgba(67, 124, 93, 0.15);
+    border-radius: 6px;
+    border-left: 4px solid #4d8a56;
+}
+
+.page-info h2 {
+    margin-top: 0;
+    color: #2e512d;
+}
+
+.page-info ul {
+    margin-bottom: 0;
+    padding-left: 1.2em;
+    list-style: disc;
+}
+
+.page-info li {
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+}
+
+.page-info a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px dashed #4d8a56;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.page-info a:hover {
+    color: #000;
+    border-bottom-color: #000;
+}
+
+/* ================== СЕКЦИИ ================== */
+.main section {
+    margin-top: 2.5em;
+    scroll-margin-top: 1em;
+}
+
+.main section h2 {
+    border-bottom: 2px solid #4d8a56;
+    padding-bottom: 0.3em;
+    margin-top: 0;
+}
+
+.main section p {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+}
+
+.main section > ol,
+.main section > ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.main section > ol li {
+    margin-bottom: 0.6em;
+    line-height: 1.6;
+    padding-left: 1.6em;
+    position: relative;
+}
+
+.main section > ol li::before {
+    content: "✅ ";
+    position: absolute;
+    left: 0;
+}
+
+.main section > ul li {
+    margin-bottom: 0.6em;
+    line-height: 1.6;
+    padding-left: 1.6em;
+    position: relative;
+}
+
+.main section > ul li::before {
+    content: "❌ ";
+    position: absolute;
+    left: 0;
+}
+
+/* ================== САЙДБАР ================== */
+.sidebar {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    position: sticky;
+    top: 1em;
+}
+
+.sidebar-widget {
+    padding: 1.2em 1.4em;
+    background-color: rgba(67, 124, 93, 0.12);
+    border-radius: 8px;
+    border-left: 3px solid #4d8a56;
+}
+
+.sidebar-widget h3 {
+    margin: 0 0 0.6em;
+    font-size: 1.1em;
+    color: #2e512d;
+}
+
+.sidebar-widget p {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #333;
+}
+
+.sidebar-widget ul {
+    margin: 0;
+    padding-left: 1.1em;
+    font-size: 0.95em;
+    line-height: 1.6;
+    list-style: disc;
+}
+
+.sidebar-widget a {
+    color: #4d8a56;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.sidebar-widget a:hover {
+    border-bottom-color: #4d8a56;
+}
+
+/* ================== АДАПТИВ ================== */
+@media (max-width: 900px) {
+    .layout {
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .sidebar {
+        flex: 1 1 auto;
+        width: 100%;
+        position: static;
+    }
+}
+
+/* ================== ФУТЕР ================== */
+.site-footer {
+    margin-top: 3em;
+    padding: 2em 1em;
+    text-align: center;
+    background-color: #2e512d;
+    color: #cfcfcf;
+    font-size: 0.95em;
+    line-height: 1.8;
+}
+
+.site-footer p {
+    margin: 0.3em 0;
+}
+
+.site-footer a {
+    color: #8fd6a3;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.site-footer a:hover {
+    color: #b8e6c4;
+    border-bottom-color: #b8e6c4;
+}
+
+.site-footer .copyright {
+    margin-top: 1em;
+    color: #8a8a8a;
+    font-size: 0.9em;
+}
+
+/* ================== СПИСКИ БЕЗ ГАЛОЧЕК/КРЕСТИКОВ ================== */
+.main section > ol.plain li::before,
+.main section > ul.plain li::before {
+    content: none;          /* убираем галочку/крестик */
+}
+
+.main section > ol.plain,
+.main section > ul.plain {
+    list-style: disc;       /* возвращаем обычные маркеры */
+    padding-left: 1.4em;    /* отступ под маркер */
+}
+
+.main section > ol.plain li,
+.main section > ul.plain li {
+    padding-left: 0;        /* убираем отступ под кастомный ::before */
+}

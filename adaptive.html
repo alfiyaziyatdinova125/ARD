@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARD — Адаптивный и отзывчивый дизайн</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main/main.js" defer></script>
+</head>
+<body>
+
+    <!--База-->
+    <header class="custom-menu-wrapper">
+        <div class="pure-menu custom-menu custom-menu-top">
+            <a href="index.html" class="pure-menu-heading custom-menu-brand">
+                <img src="img/logo.png" alt="Логотип ARD" class="brand-logo">
+                <span class="brand-text">ARD</span>
+            </a>
+            <a href="#" class="custom-menu-toggle" id="toggle" aria-label="Открыть меню">
+                <s class="bar"></s><s class="bar"></s>
+            </a>
+        </div>
+        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu" aria-label="Основная навигация">
+            <div class="custom-menu-screen"></div>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                <li class="pure-menu-item"><a href="history.html" class="pure-menu-link">История</a></li>
+                <li class="pure-menu-item"><a href="adaptive.html" class="pure-menu-link">Адаптивный</a></li>
+                <li class="pure-menu-item"><a href="responsive.html" class="pure-menu-link">Отзывчивый</a></li>
+                <li class="pure-menu-item"><a href="comparison.html" class="pure-menu-link">Сравнение</a></li>
+                <li class="pure-menu-item"><a href="trends.html" class="pure-menu-link">Современные тренды</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="layout">
+
+        <!-- Меню и основной контент-->
+        <main class="main">
+            <h1>Что такое адаптивный дизайн?</h1>
+            <p>Адаптивный дизайн работает так: вы создаете не один универсальный сайт,
+                а несколько отдельных макетов под разные экраны. Когда человек заходит на сайт, сервер сразу понимает,
+                с какого устройства он зашел (телефон, планшет или компьютер), и показывает подходящий вариант дизайна.</p>
+
+            <img src="img/adaptive.jpg"
+                 srcset="img/adaptive-480.jpg 480w,
+                         img/adaptive-960.jpg 960w,
+                         img/adaptive-1440.jpg 1440w"
+                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                 alt="Пример адаптивного дизайна"
+                 title="Адаптивный дизайн">
+
+            <div class="page-info">
+                <h2>Что мы узнаем</h2>
+                <ul>
+                    <li><a href="#what-is">Что такое адаптивный дизайн</a></li>
+                    <li><a href="#pluseminys">Плюсы и минусы</a></li>
+                    <li><a href="#examples">Примеры адаптивного дизайна</a></li>
+                    <li><a href="#video">Видео</a></li>
+                </ul>
+            </div>
+
+            <section id="what-is">
+                <h2>Что такое адаптивный дизайн (adaptive)</h2>
+                <p>Адаптивный дизайн – это подход, при котором для каждого диапазона размеров экрана создается отдельный макет.
+                    Пользователю показывается не «растянутый» универсальный шаблон, а заранее подготовленная оптимизированная версия.
+                </p>
+                <p>
+                    Адаптивный дизайн часто следует принципу progressive enhancement – «постепенного улучшения».
+                </p>
+                <p>
+                    Сначала делается базовая версия интерфейса. Она простая и работает даже на слабых устройствах и при медленном интернете.
+                    А потом, если устройство позволяет, сайт постепенно «прокачивается»: добавляются красивые стили, сложные элементы и картинки
+                    в высоком разрешении.
+                </p>
+                <p>
+                    Прогрессивное улучшение обычно связывают с адаптивным дизайном, но на самом деле этот подход универсален.
+                    Его часто используют и в отзывчивых сайтах, которые делают по принципу mobile-first: сначала простой мобильный макет,
+                    а потом он дополняется по мере увеличения экрана.
+                </p>
+            </section>
+
+            <section id="pluseminys">
+                <h2>Плюсы и минусы адаптивного дизайна</h2>
+                <p>Чем хорош адаптивный дизайн:</p>
+                <ol>
+                    <li><b>Полный контроль над дизайном. </b>Вы заранее решаете, как сайт будет выглядеть на каждом типе устройств, и настраиваете всё до мелочей.</li>
+                    <li><b>Точная подгонка под экран.</b> Можно настроить ширину и расположение элементов отдельно для компьютеров, планшетов и телефонов.</li>
+                    <li><b>Удобство для пользователя.</b> Контент отображается идеально, и с ним легко взаимодействовать на любом устройстве.</li>
+                    <li><b>Быстрая загрузка.</b> Сервер отдает только нужные файлы, поэтому сайт грузится быстрее на тех устройствах, под которые сделан.</li>
+                    <li><b>Выручает сложные сайты.</b> Если на сайте много интерактива и медиа, адаптивная версия облегчает их загрузку на телефонах.</li>
+                </ol>
+                <p>А теперь о минусах:</p>
+                <ul>
+                    <li><b>Дорого и трудоемко.</b> Нужно нарисовать, собрать и постоянно поддерживать несколько версий сайта.</li>
+                    <li><b>Жесткая структура.</b> Макеты заданы заранее, поэтому новые или необычные экраны сайт может не поддержать.</li>
+                    <li><b>Не всем подходит.</b> Пользователи с нестандартными устройствами рискуют получить не самый удобный вариант.</li>
+                    <li><b>Зависимость от сервера.</b> Всё держится на том, правильно ли сервер определит тип устройства.</li>
+                    <li><b>Риск ошибки.</b> Если устройство распознано неверно, человек увидит неподходящую верстку — а это раздражает.</li>
+                </ul>
+            </section>
+
+            <section id="examples">
+                <h2>Примеры адаптивного дизайна</h2>
+                <p><b>Простой пример ВК</b></p>
+                <p>В цифровом мире есть яркий пример компании, которая делает ставку на адаптивный дизайн, — это ВКонтакте.</p>
+                <p>
+                    Благодаря адаптивному дизайну VK заботится о том, чтобы пользователю было удобно в любом случае: заходит он в соцсеть
+                    с настольного компьютера или открывает мобильное приложение — интерфейс подстраивается под экран.
+                    В итоге человек получает удобное управление и хорошую скорость работы.
+                </p>
+
+                <img src="img/vk.jpg"
+                     srcset="img/vk-480.jpg 480w,
+                             img/vk-960.jpg 960w,
+                             img/vk-1440.jpg 1440w"
+                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                     alt="Интерфейс ВКонтакте на разных устройствах"
+                     title="ВКонтакте">
+            </section>
+
+            <section id="video">
+                <h2>Видео</h2>
+                <p>ююю</p>
+            </section>
+        </main>
+
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Описание страницы</h3>
+                <p>Разбираем, что такое адаптивный дизайн.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Совет дня</h3>
+                <p class="tip-of-day">Проверяйте сайт не только в DevTools, но и на реальных устройствах — эмуляция не всегда показывает реальные проблемы.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank" rel="noopener noreferrer">MDN: Отзывчивый дизайн</a></li>
+                    <li><a href="https://web.dev/responsive-web-design-basics/" target="_blank" rel="noopener noreferrer">web.dev: основы RWD</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">Can I use</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!--Подвал-->
+    <footer class="site-footer">
+        <p>
+            Автор сайта:
+            <a href="mailto:alfiya.ziyatdinova@bk.ru">Зиятдинова Альфия</a>,
+            335 группа
+        </p>
+        <p>
+            <a href="https://vk.ru/mrs.alfiya" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </p>
+        <p>
+            Почта: <a href="mailto:alfiya.ziyatdinova@bk.ru">alfiya.ziyatdinova@bk.ru</a>
+        </p>
+        <p class="copyright">© 2026</p>
+    </footer>
+
+</body>
+</html>

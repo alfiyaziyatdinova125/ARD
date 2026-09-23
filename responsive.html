@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARD — Адаптивный и отзывчивый дизайн</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main/main.js" defer></script>
+</head>
+<body>
+
+    <!--База-->
+    <header class="custom-menu-wrapper">
+        <div class="pure-menu custom-menu custom-menu-top">
+            <a href="index.html" class="pure-menu-heading custom-menu-brand">
+                <img src="img/logo.png" alt="Логотип ARD" class="brand-logo">
+                <span class="brand-text">ARD</span>
+            </a>
+            <a href="#" class="custom-menu-toggle" id="toggle" aria-label="Открыть меню">
+                <s class="bar"></s><s class="bar"></s>
+            </a>
+        </div>
+        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu" aria-label="Основная навигация">
+            <div class="custom-menu-screen"></div>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                <li class="pure-menu-item"><a href="history.html" class="pure-menu-link">История</a></li>
+                <li class="pure-menu-item"><a href="adaptive.html" class="pure-menu-link">Адаптивный</a></li>
+                <li class="pure-menu-item"><a href="responsive.html" class="pure-menu-link">Отзывчивый</a></li>
+                <li class="pure-menu-item"><a href="comparison.html" class="pure-menu-link">Сравнение</a></li>
+                <li class="pure-menu-item"><a href="trends.html" class="pure-menu-link">Современные тренды</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="layout">
+
+        <!-- Меню и основной контент-->
+        <main class="main">
+            <h1>Что такое отзывчивый дизайн?</h1>
+            <p> В основе отзывчивого дизайна лежит простая идея: 
+                сайтом должно быть одинаково удобно пользоваться и на компьютере, и на смартфоне.
+            </p>
+            <p>Благодаря отзывчивому дизайну сайт дает оптимальный опыт почти на любом устройстве — 
+                от маленького телефона до большого настольного монитора. По сути, этот дизайн такой же гибкий, как и сам интернет.
+            </p>
+
+            <img src="img/adaptive.jpg"
+                 srcset="img/adaptive-480.jpg 480w,
+                         img/adaptive-960.jpg 960w,
+                         img/adaptive-1440.jpg 1440w"
+                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                 alt="Пример адаптивного дизайна"
+                 title="Адаптивный дизайн">
+
+            <div class="page-info">
+                <h2>Что мы узнаем</h2>
+                <ul>
+                    <li><a href="#what-is">Что такое отзывчивый дизайн</a></li>
+                    <li><a href="#pluseminys">Плюсы и минусы</a></li>
+                    <li><a href="#examples">Примеры отзывчивого дизайна</a></li>
+                    <li><a href="#video">Видео</a></li>
+                </ul>
+            </div>
+
+            <section id="what-is">
+                <h2>Что такое отзывчивый дизайн (responsive)</h2>
+                <p>Отзывчивый дизайн – это метод, при котором веб-страница автоматически перестраивается под размер экрана пользователя. 
+                    И слово «перестраивается» как раз и отражает главную разницу между адаптивным и отзывчивым дизайном.
+                </p>
+                <p>
+                    Чтобы один и тот же интерфейс подстраивался под любой экран, в отзывчивом дизайне используют <b>три ключевых приёма</b>.
+                </p>
+                <p>
+                    <b>1. Гибкая сетка (fluid grid).</b> Элементы размещают не в пикселях, а в процентах. Благодаря этому блоки 
+                    сами сжимаются или растягиваются вместе с шириной экрана. <br>
+                    <i>Например, если колонка занимает 50% ширины, она будет выглядеть уместно и на телефоне, и на большом мониторе.</i>
+                </p>
+                <p>
+                    <b>2. Медиа-запросы (media queries).</b> Это правила, которые включают разные стили в зависимости от ширины экрана. <br>
+                    <i>Например, если экран уже 768 пикселей, текст становится меньше, кнопки — крупнее, а меню упрощается.</i>
+                </p>
+                <p>
+                    <b>3. Адаптивные элементы.</b> Это картинки, кнопки и блоки, которые сами подстраиваются под экран. <br>
+                    <i>Например, изображения уменьшаются, чтобы не вылезать за границы, а карточки товаров выстраиваются в одну колонку вместо трёх.</i>
+                </p>
+            </section>
+
+            <section id="pluseminys">
+                <h2>Плюсы и минусы отзывчивого дизайна</h2>
+                <p>Чем хорош отзывчивый дизайн:</p>
+                <ol>
+                    <li><b>Универсальность.</b> Один сайт одинаково хорошо работает на всех устройствах — от маленького смартфона до большого монитора. Пользователь везде получает понятный и удобный интерфейс.</li>
+                    <li><b>Экономия для владельца.</b> Не нужно делать и поддерживать отдельные сайты под каждое устройство — достаточно одного.</li>
+                    <li><b>Лучше для SEO.</b> Поисковики, в том числе Google, любят сайты, удобные для мобильных. Это помогает подняться в выдаче и привлечь больше людей.</li>
+                    <li><b>Актуальность.</b> С каждым годом всё больше людей выходят в интернет именно с телефона, и отзывчивый сайт это учитывает.</li>
+                </ol>
+                <p>А теперь о минусах:</p>
+                <ul>
+                    <li><b>Сложно сделать хорошо.</b> Нужно, чтобы сайт был и удобным, и красивым сразу на всех экранах. Приходится продумывать массу деталей: от размера кнопок до масштаба картинок.</li>
+                    <li><b>Проблемы со скоростью.</b> Если сайт плохо оптимизирован, на телефон могут грузиться тяжелые файлы, рассчитанные на компьютер. Это замедляет загрузку и портит впечатление.</li>
+                    <li><b>Ограничения в творчестве.</b> Ради гибкости и простоты навигации дизайнеру порой приходится отказываться от смелых и сложных решений, которые были бы возможны на сайте под конкретное устройство.</li>
+                </ul>
+            </section>
+
+            <section id="examples">
+                <h2>Примеры отзывчивого дизайна</h2>
+                <p><b>Хороший пример - Dropbox </b></p>
+                <p>
+                    На компьютере это полноценная страница с крупными иллюстрациями, меню в несколько колонок и подробными описаниями тарифов. 
+                    Но стоит открыть тот же сайт на телефоне — и картинка меняется: меню сворачивается в компактную кнопку, блоки выстраиваются в одну колонку, 
+                    а текст становится крупнее и читается без увеличения.
+                </p>
+                <p>
+                    При этом главное остается на месте: кнопка регистрации, ключевые преимущества и навигация. 
+                    Пользователь и на большом мониторе, и на маленьком экране видит одно и то же по 
+                    смыслу — просто поданное так, как удобно именно этому устройству.
+                </p>
+
+                <img src="img/vk.jpg"
+                     srcset="img/vk-480.jpg 480w,
+                             img/vk-960.jpg 960w,
+                             img/vk-1440.jpg 1440w"
+                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                     alt="Интерфейс ВКонтакте на разных устройствах"
+                     title="ВКонтакте">
+            </section>
+
+            <section id="video">
+                <h2>Видео</h2>
+                <p>ююю</p>
+            </section>
+        </main>
+
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Описание страницы</h3>
+                <p>Разбираем, что такое отзывчивый дизайн.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Совет дня</h3>
+                <p class="tip-of-day">Проверяйте сайт не только в DevTools, но и на реальных устройствах — эмуляция не всегда показывает реальные проблемы.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank" rel="noopener noreferrer">MDN: Отзывчивый дизайн</a></li>
+                    <li><a href="https://web.dev/responsive-web-design-basics/" target="_blank" rel="noopener noreferrer">web.dev: основы RWD</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">Can I use</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!--Подвал-->
+    <footer class="site-footer">
+        <p>
+            Автор сайта:
+            <a href="mailto:alfiya.ziyatdinova@bk.ru">Зиятдинова Альфия</a>,
+            335 группа
+        </p>
+        <p>
+            <a href="https://vk.ru/mrs.alfiya" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </p>
+        <p>
+            Почта: <a href="mailto:alfiya.ziyatdinova@bk.ru">alfiya.ziyatdinova@bk.ru</a>
+        </p>
+        <p class="copyright">© 2026</p>
+    </footer>
+
+</body>
+</html>
