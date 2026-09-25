@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARD — Адаптивный и отзывчивый дизайн</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main/main.js" defer></script>
+</head>
+<body>
+
+    <!--База-->
+    <header class="custom-menu-wrapper">
+        <div class="pure-menu custom-menu custom-menu-top">
+            <a href="index.html" class="pure-menu-heading custom-menu-brand">
+                <img src="img/logo.png" alt="Логотип ARD" class="brand-logo">
+                <span class="brand-text">ARD</span>
+            </a>
+            <a href="#" class="custom-menu-toggle" id="toggle" aria-label="Открыть меню">
+                <s class="bar"></s><s class="bar"></s>
+            </a>
+        </div>
+        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu" aria-label="Основная навигация">
+            <div class="custom-menu-screen"></div>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                <li class="pure-menu-item"><a href="history.html" class="pure-menu-link">История</a></li>
+                <li class="pure-menu-item"><a href="adaptive.html" class="pure-menu-link">Адаптивный</a></li>
+                <li class="pure-menu-item"><a href="responsive.html" class="pure-menu-link">Отзывчивый</a></li>
+                <li class="pure-menu-item"><a href="comparison.html" class="pure-menu-link">Сравнение</a></li>
+                <li class="pure-menu-item"><a href="trends.html" class="pure-menu-link">Современные тренды</a></li>
+                <li class="pure-menu-item"><a href="tools.html" class="pure-menu-link">Инструменты</a></li>
+                <li class="pure-menu-item"><a href="mistakes.html" class="pure-menu-link">Ошибки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="layout">
+
+        <!-- Меню и основной контент-->
+        <main class="main">
+            <h1>Адаптивный дизайн VS отзывчивый дизайн</h1>
+            <p>
+                Адаптивный и отзывчивый дизайн часто путают или используют как синонимы. Но это два разных подхода,
+                у каждого — своя логика, свои сильные стороны и свои ограничения. Разберёмся, чем они отличаются
+                и что выбрать для конкретного проекта.
+            </p>
+
+            <div class="page-info">
+                <h2>Что мы узнаем</h2>
+                <ul>
+                    <li><a href="#difference">Главное отличие</a></li>
+                    <li><a href="#table">Сравнительная таблица</a></li>
+                    <li><a href="#responsive">Отзывчивый дизайн</a></li>
+                    <li><a href="#adaptive">Адаптивный дизайн</a></li>
+                    <li><a href="#hybrid">Что выбрать на практике</a></li>
+                </ul>
+            </div>
+
+            <div class="page-info">
+                <h2>Перед началом ознакомьтесь</h2>
+                <p>
+                    Адаптивный и отзывчивый дизайн легко перепутать — они звучат похоже, но работают по-разному.
+                    На этой странице мы их сравниваем. А чтобы разница была очевидной, загляните сначала сюда:
+                </p>
+                <ul class="plain">
+                    <li><a href="adaptive.html">Адаптивный дизайн</a></li>
+                    <li><a href="responsive.html">Отзывчивый дизайн</a></li>
+                </ul>
+                <p>Если уже читали — смело листайте дальше к сравнению.</p>
+            </div>
+
+            <section id="difference">
+                <h2>Главное отличие</h2>
+                <p>
+                    <b>Отзывчивый дизайн (responsive)</b> — это <i>один гибкий макет</i>, который плавно перестраивается
+                    под любой размер экрана. Страница «течёт» как вода, заполняя доступное пространство.
+                </p>
+                <p>
+                    <b>Адаптивный дизайн (adaptive)</b> — это <i>несколько фиксированных макетов</i>, которые переключаются
+                    при достижении определённых разрешений. Пользователю показывается не «растянутый» универсальный шаблон,
+                    а заранее подготовленная оптимизированная версия.
+                </p>
+                <p>
+                    Проще говоря: отзывчивый дизайн <b>непрерывен</b>, адаптивный — <b>дискретен</b>.
+                </p>
+            </section>
+
+            <section id="table">
+                <h2>Сравнительная таблица</h2>
+                <table class="pure-table pure-table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Критерий</th>
+                            <th>Отзывчивый дизайн</th>
+                            <th>Адаптивный дизайн</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Принцип</td>
+                            <td>Один гибкий макет, плавно меняющийся</td>
+                            <td>Несколько фиксированных макетов</td>
+                        </tr>
+                        <tr>
+                            <td>Единицы измерения</td>
+                            <td>Проценты, <code>vw</code>, <code>rem</code>, <code>fr</code></td>
+                            <td>Пиксели, фиксированные значения</td>
+                        </tr>
+                        <tr>
+                            <td>Технологии</td>
+                            <td>Медиа-запросы, гибкая сетка, адаптивные элементы</td>
+                            <td>Медиа-запросы + серверная или JS-логика выбора шаблона</td>
+                        </tr>
+                        <tr>
+                            <td>Количество кода</td>
+                            <td>Одна кодовая база</td>
+                            <td>Несколько шаблонов или наборов стилей</td>
+                        </tr>
+                        <tr>
+                            <td>Поведение между брейкпоинтами</td>
+                            <td>Плавное изменение</td>
+                            <td>«Провал» — макет не предусмотрен</td>
+                        </tr>
+                        <tr>
+                            <td>Контроль дизайнера</td>
+                            <td>Частичный</td>
+                            <td>Полный: каждый макет выверен до пикселя</td>
+                        </tr>
+                        <tr>
+                            <td>Поддержка</td>
+                            <td>Проще: одна версия</td>
+                            <td>Сложнее: нужно синхронизировать несколько макетов</td>
+                        </tr>
+                        <tr>
+                            <td>Гибкость</td>
+                            <td>Высокая: работает на любом экране</td>
+                            <td>Ограниченная: между брейкпоинтами возможны проблемы</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="responsive">
+                <h2>Отзывчивый дизайн:</h2>
+                <p>
+                    В основе отзывчивого дизайна — <b>три ключевых приёма</b>: гибкая сетка (fluid grid),
+                    медиа-запросы (media queries) и адаптивные элементы. Вместе они позволяют одному и тому же
+                    интерфейсу подстраиваться под любой экран.
+                </p>
+                <p><b>Плюсы:</b></p>
+                <ol class="check">
+                    <li><b>Универсальность.</b> Один сайт одинаково хорошо работает на всех устройствах.</li>
+                    <li><b>Экономия для владельца.</b> Не нужно делать и поддерживать отдельные сайты.</li>
+                    <li><b>Лучше для SEO.</b> Поисковики любят сайты, удобные для мобильных.</li>
+                    <li><b>Актуальность.</b> Учитывает рост мобильного трафика.</li>
+                </ol>
+                <p><b>Минусы:</b></p>
+                <ul class="cross">
+                    <li><b>Сложно сделать хорошо.</b> Нужно продумать массу деталей сразу для всех экранов.</li>
+                    <li><b>Проблемы со скоростью.</b> На телефон могут грузиться тяжёлые файлы, рассчитанные на компьютер.</li>
+                    <li><b>Ограничения в творчестве.</b> Ради гибкости порой приходится отказываться от смелых решений.</li>
+                </ul>
+            </section>
+
+            <section id="adaptive">
+                <h2>Адаптивный дизайн:</h2>
+                <p>
+                    Адаптивный дизайн часто следует принципу <b>progressive enhancement</b> — «постепенного улучшения».
+                    Сначала делается базовая версия, которая работает даже на слабых устройствах, а потом сайт
+                    постепенно «прокачивается» под более мощные экраны.
+                </p>
+                <p><b>Плюсы:</b></p>
+                <ol class="check">
+                    <li><b>Полный контроль над дизайном.</b> Вы заранее решаете, как сайт выглядит на каждом устройстве.</li>
+                    <li><b>Точная подгонка под экран.</b> Ширина и расположение элементов настраиваются отдельно.</li>
+                    <li><b>Удобство для пользователя.</b> Контент отображается идеально.</li>
+                    <li><b>Быстрая загрузка.</b> Сервер отдаёт только нужные файлы.</li>
+                </ol>
+                <p><b>Минусы:</b></p>
+                <ul class="cross">
+                    <li><b>Дорого и трудоёмко.</b> Нужно поддерживать несколько версий сайта.</li>
+                    <li><b>Жёсткая структура.</b> Новые или необычные экраны сайт может не поддержать.</li>
+                    <li><b>Зависимость от сервера.</b> Всё держится на правильном определении устройства.</li>
+                    <li><b>Риск ошибки.</b> Если устройство распознано неверно — человек увидит неподходящую вёрстку.</li>
+                </ul>
+            </section>
+
+            <section id="hybrid">
+                <h2>Что выбрать на практике</h2>
+                <p>
+                    В чистом виде ни отзывчивый, ни адаптивный дизайн сегодня почти не встречаются.
+                    Большинство современных проектов используют <b>гибрид</b>: адаптивная сетка на уровне страницы
+                    и отзывчивые элементы внутри.
+                </p>
+                <table class="pure-table pure-table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Ситуация</th>
+                            <th>Рекомендация</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Стандартный сайт, блог, лендинг</td>
+                            <td>Отзывчивый дизайн</td>
+                        </tr>
+                        <tr>
+                            <td>Магазин с разными сценариями на мобильном и десктопе</td>
+                            <td>Гибрид: отзывчивая основа + адаптивные переключения</td>
+                        </tr>
+                        <tr>
+                            <td>Сложное веб-приложение с принципиально разным UX</td>
+                            <td>Адаптивный подход с отдельными шаблонами</td>
+                        </tr>
+                        <tr>
+                            <td>Ограниченный бюджет</td>
+                            <td>Отзывчивый дизайн: дешевле в разработке и поддержке</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Главный вопрос не «что выбрать», а <b>«где провести границу»</b>: какие части интерфейса
+                    должны плавно подстраиваться, а какие — переключаться структурно.
+                </p>
+            </section>
+
+            <section>
+                <a href="index.html" class="hero-btn">Вернуться на главную</a>
+            </section>
+        </main>
+
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Описание страницы</h3>
+                <p>Сравниваем адаптивный и отзывчивый дизайн: в чём разница и что выбрать.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Совет дня</h3>
+                <p class="tip-of-day">Проверяйте сайт не только в DevTools, но и на реальных устройствах — эмуляция не всегда показывает реальные проблемы.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank" rel="noopener noreferrer">MDN: Отзывчивый дизайн</a></li>
+                    <li><a href="https://web.dev/responsive-web-design-basics/" target="_blank" rel="noopener noreferrer">web.dev: основы RWD</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">Can I use</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!--Подвал-->
+    <footer class="site-footer">
+        <p>
+            Автор сайта:
+            <a href="mailto:alfiya.ziyatdinova@bk.ru">Зиятдинова Альфия</a>,
+            335 группа
+        </p>
+        <p>
+            <a href="https://vk.ru/mrs.alfiya" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </p>
+        <p>
+            Почта: <a href="mailto:alfiya.ziyatdinova@bk.ru">alfiya.ziyatdinova@bk.ru</a>
+        </p>
+        <p class="copyright">© 2026</p>
+    </footer>
+
+</body>
+</html>

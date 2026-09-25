@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARD — Адаптивный и отзывчивый дизайн</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main/main.js" defer></script>
+</head>
+<body>
+
+    <!--База-->
+    <header class="custom-menu-wrapper">
+        <div class="pure-menu custom-menu custom-menu-top">
+            <a href="index.html" class="pure-menu-heading custom-menu-brand">
+                <img src="img/logo.png" alt="Логотип ARD" class="brand-logo">
+                <span class="brand-text">ARD</span>
+            </a>
+            <a href="#" class="custom-menu-toggle" id="toggle" aria-label="Открыть меню">
+                <s class="bar"></s><s class="bar"></s>
+            </a>
+        </div>
+        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu" aria-label="Основная навигация">
+            <div class="custom-menu-screen"></div>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                <li class="pure-menu-item"><a href="history.html" class="pure-menu-link">История</a></li>
+                <li class="pure-menu-item"><a href="adaptive.html" class="pure-menu-link">Адаптивный</a></li>
+                <li class="pure-menu-item"><a href="responsive.html" class="pure-menu-link">Отзывчивый</a></li>
+                <li class="pure-menu-item"><a href="comparison.html" class="pure-menu-link">Сравнение</a></li>
+                <li class="pure-menu-item"><a href="trends.html" class="pure-menu-link">Современные тренды</a></li>
+                <li class="pure-menu-item"><a href="tools.html" class="pure-menu-link">Инструменты</a></li>
+                <li class="pure-menu-item"><a href="mistakes.html" class="pure-menu-link">Ошибки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="layout">
+
+        <!-- Меню и основной контент-->
+        <main class="main">
+            <h1>Современные тренды адаптивного и отзывчивого дизайна</h1>
+            <p>
+                Когда в исторической части мы проследили путь от 
+                фиксированной ширины до CSS Grid, возникает естественный вопрос: <b>что означает адаптивный и отзывчивый дизайн сегодня?</b>
+            </p>
+            <p>
+                Ответ давно вышел за рамки «сделать так, чтобы страница не ломалась на разных экранах». В 2026 году адаптивность - 
+                это уже не про размер экрана, а про <b>контекст и автономность компонентов</b>.
+            </p>
+
+            <img src="img/adaptive.jpg"
+                 srcset="img/adaptive-480.jpg 480w,
+                         img/adaptive-960.jpg 960w,
+                         img/adaptive-1440.jpg 1440w"
+                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                 alt="Пример адаптивного дизайна"
+                 title="Адаптивный дизайн">
+
+            <div class="page-info">
+                <h2>Что мы узнаем</h2>
+                <ul>
+                    <li><a href="#container">От адаптации к вьюпорту</a></li>
+                    <li><a href="#subgrid">Subgrid</a></li>
+                    <li><a href="#clamp">Плавная типографика и отступы</a></li>
+                    <li><a href="#mobile-first">Mobile First остаётся по умолчанию</a></li>
+                    <li><a href="#performance">Производительность как часть адаптивности</a></li>
+                    <li><a href="#design-system">Единообразие на уровне дизайн-системы</a></li>
+                    <li><a href="#summary">Соотношение подходов сегодня</a></li>
+                </ul>
+            </div>
+
+            <section id="container">
+                <h2>От адаптации к вьюпорту — к адаптации к контейнеру</h2>
+                <p>
+                    Это самый значимый сдвиг последних лет.
+                </p>
+                <p>
+                    <b>Суть изменения:</b> компонент реагирует не на ширину окна браузера, а на 
+                    <b>размер собственного родительского контейнера.</b>
+                </p>
+                <p>
+                    Классические медиа-запросы (<code>@media</code>) ориентируются на всю ширину вьюпорта. Это работает для макетов уровня страницы, 
+                    но ломается, когда один и тот же компонент — например, карточка товара — попадает в сайдбар, в основную область и в модальное окно. 
+                    Карточка «не знает», сколько места у неё на самом деле.
+                </p>
+                <p>
+                    <b>Container Queries</b> решают эту проблему: компонент сам определяет, как перестроить своё содержимое, исходя из доступной ширины контейнера. 
+                    Одна и та же карточка в узком сайдбаре становится компактной одноколоночной, а в широкой области — разворачивается в две колонки 
+                    с дополнительной информацией. Без JavaScript — только CSS.
+                </p>
+                <p>
+                    <b>Практический вывод:</b> медиа-запросы остаются для структурных переключений на уровне страницы (например, сворачивание бокового меню 
+                    в нижнюю навигацию), а container queries берут на себя адаптацию компонентов.
+                </p>
+            </section>
+
+            <section id="subgrid">
+                <h2>Subgrid: выравнивание вложенных элементов без «костылей»</h2>
+                <p>
+                    Subgrid закрывает давнюю боль CSS Grid: вложенные элементы не могли выравниваться по сетке родителя.
+                </p>
+                <p>
+                    Раньше, если в ряд стояли несколько карточек с заголовками разной длины, разделители под заголовками не совпадали — 
+                    каждая карточка строила свою внутреннюю сетку независимо. <b>Subgrid</b> позволяет дочерней сетке наследовать треки родительской, 
+                    и заголовки, описания и кнопки выстраиваются в идеальные линии across все карточки.
+                </p>
+                <p>
+                    <b>Поддержка браузерами:</b> к 2026 году Container Queries и Subgrid вошли в стабильные версии всех современных браузеров.
+                </p>
+            </section>
+
+            <section id="clamp">
+                <h2>Плавная типографика и отступы: прощай, «прыжок» на брейкпоинтах</h2>
+                <p>
+                    Фиксированные размеры шрифта слишком велики на мобильных и слишком малы на десктопе. Функция <code>clamp()</code> позволяет шрифту 
+                    и отступам плавно масштабироваться между двумя границами, убирая «мёртвые зоны» между контрольными точками.
+                </p>
+                
+                <p>
+                    Но есть ловушка доступности: если использовать только вьюпортные единицы (например, <code>5vw</code>), настройка увеличенного шрифта 
+                    в браузере пользователя будет проигнорирована. Правильный подход — смешивать <code>rem</code> с вьюпортными единицами, например 
+                    <code>clamp(1rem, 0.5rem + 2vw, 2rem)</code>, чтобы базовый размер, заданный пользователем, продолжал работать.
+                </p>
+            </section>
+
+            <section id="mobile-first">
+                <h2>Mobile First остаётся по умолчанию — но смысл стал тоньше</h2>
+                <p>
+                    Mobile First в 2026 году по-прежнему рекомендуемый подход, но он превратился из лозунга в настройку рабочего процесса по умолчанию.
+                </p>
+                <p>
+                    <b>Современное понимание:</b> начинаем с базовых стилей для маленьких экранов, используем <code>min-width</code> медиа-запросы 
+                    для постепенного усложнения. Это не только стратегия организации кода, но и способ расставить приоритеты контента: 
+                    маленький экран заставляет задуматься, что действительно важно.
+                </p>
+            </section>
+
+            <section id="performance">
+                <h2>Производительность как часть адаптивности</h2>
+                <p>
+                    «Адаптивная» страница, которая плохо работает на медленной мобильной сети, — не адаптивная.
+                </p>
+                <p>
+                    В современной практике оптимизация производительности рассматривается как неотъемлемая часть адаптивного дизайна:
+                </p>
+                <ol class="plain">
+                    <li><b>Изображения:</b> <code>srcset</code> и <code>picture</code> для подбора ресурсов под плотность экрана, <i>aspect-ratio</i> 
+                    для резервирования места и предотвращения сдвига макета (CLS).</li>
+                    <li><b>Стратегия загрузки:</b> ключевой контент первого экрана получает <code>fetchpriority="high"</code>, содержимое ниже сгиба — 
+                    ленивую загрузку.</li>
+                    <li><b>Доставка CSS:</b> разделение критических и некритических стилей, чтобы мобильные устройства не грузили лишние правила.</li>
+                </ol>
+                    
+            </section>
+
+            <section id="design-system">
+                <h2>Единообразие адаптивности на уровне дизайн-системы</h2>
+                <p>
+                    В крупных продуктовых командах главный источник провалов адаптивности — не техническая неспособность, а несогласованность: 
+                    одна и та же кнопка в двух разных командах ведёт себя по-разному на одних и тех же брейкпоинтах.
+                </p>
+                <p>
+                    <b>Современный тренд</b> — рассматривать адаптивное поведение как свойство компонента, а не страницы. Когда кнопка, карточка 
+                    или таблица «знают», как реагировать на изменение своего контейнера, все команды, использующие этот компонент, бесплатно 
+                    получают корректное поведение.
+                </p>
+                <p>
+                    Этот подход естественно сочетается с Container Queries: компонент «самоосознателен», его логика адаптации встроена 
+                    в определение, а не размазана по переопределяющим стилям на каждой странице.
+                </p>
+            </section>
+
+            <section id="summary">
+                <h2>О соотношении «адаптивного» и «отзывчивого» сегодня</h2>
+                <p>
+                    Важно отметить: к 2026 году чистый адаптивный дизайн (несколько фиксированных макетов, переключаемых по типу устройства) 
+                    в практике почти не используется как самостоятельный подход. Отзывчивая fluid-вёрстка стала стандартом, а адаптивные 
+                    «дискретные переключения» остались лишь как дополнение в специфических сценариях — например, когда для складных устройств 
+                    нужен принципиально иной режим взаимодействия.
+                </p>
+                <p>
+                    Оба подхода слились в многоуровневую стратегию: fluid-макеты обрабатывают непрерывные изменения, медиа-запросы и 
+                    container queries — структурные дискретные переключения.
+                </p>
+            </section>
+
+            <section>
+                <a href="index.html" class="hero-btn">Вернуться на главную</a>
+            </section>
+
+        </main>
+
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Описание страницы</h3>
+                <p>Современные тренды адаптивного и отзывчивого дизайна: Container Queries, Subgrid, плавная типографика, 
+                    Mobile First и производительность.
+                </p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Совет дня</h3>
+                <p class="tip-of-day">Используйте Container Queries для компонентов и медиа-запросы для структуры страницы — это разделение упрощает поддержку кода.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_containment/Container_queries" target="_blank" rel="noopener noreferrer">MDN: Container Queries</a></li>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_grid_layout/Subgrid" target="_blank" rel="noopener noreferrer">MDN: Subgrid</a></li>
+                    <li><a href="https://web.dev/responsive-web-design-basics/" target="_blank" rel="noopener noreferrer">web.dev: основы RWD</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">Can I use</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!--Подвал-->
+    <footer class="site-footer">
+        <p>
+            Автор сайта:
+            <a href="mailto:alfiya.ziyatdinova@bk.ru">Зиятдинова Альфия</a>,
+            335 группа
+        </p>
+        <p>
+            <a href="https://vk.ru/mrs.alfiya" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </p>
+        <p>
+            Почта: <a href="mailto:alfiya.ziyatdinova@bk.ru">alfiya.ziyatdinova@bk.ru</a>
+        </p>
+        <p class="copyright">© 2026</p>
+    </footer>
+
+</body>
+</html>

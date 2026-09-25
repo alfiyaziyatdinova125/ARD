@@ -28,8 +28,9 @@ html {
 .brand-logo {
     height: 36px;
     width: auto;
-    display: block; 
+    display: block;
 }
+
 @media (max-width: 62em) {
     .brand-logo {
         height: 30px;
@@ -45,7 +46,7 @@ html {
     font-size: 1.4em;
     letter-spacing: 0.05em;
     color: white;
-    line-height: 1;             /* чтобы текст не «прыгал» относительно логотипа */
+    line-height: 1;
 }
 
 /* ================== МЕНЮ ================== */
@@ -85,23 +86,27 @@ html {
 
 .custom-menu-brand {
     display: flex;
-    align-items: center;        /* выравнивание по вертикали (по центру) */
-    justify-content: center;    /* выравнивание по горизонтали (по центру меню) */
-    gap: 0.2em;                 /* отступ между логотипом и текстом */
+    align-items: center;
+    justify-content: center;
+    gap: 0.2em;
     text-align: center;
     position: relative;
-    line-height: 1;             /* убираем лишнюю высоту строки */
+    line-height: 1;
     text-decoration: none;
 }
 
+/* ================== БУРГЕР ================== */
 .custom-menu-toggle {
     width: 44px;
     height: 44px;
-    display: block;
-    position: absolute;
-    top: 15px;
-    right: 0;
-    display: none;
+    display: none;              /* показываем только на мобильных */
+    position: fixed;            /* фиксируем на экране */
+    top: 10px;
+    right: 10px;
+    z-index: 1000;              /* поверх всего */
+    background-color: #4d8a56;  /* фон, чтобы не сливался с контентом */
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .custom-menu-toggle .bar {
@@ -111,7 +116,7 @@ html {
     height: 2px;
     border-radius: 100px;
     position: absolute;
-    top: 22px;
+    top: 21px;
     right: 12px;
     transition: all 0.5s;
 }
@@ -142,6 +147,7 @@ html {
     transform: translateY(-44px);
     opacity: 0;
 }
+
 .pure-menu-link.active {
     background-color: rgba(255, 255, 255, 0.25);
     color: #ffffff;
@@ -196,13 +202,13 @@ html {
 .hero {
     position: relative;
     width: 100%;
-    min-height: 480px;              /* высота баннера */
+    min-height: 480px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #ffffff;
-    background-image: url('/img/hero.png');   /* ← своя картинка */
+    background-image: url('/img/hero.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -210,18 +216,17 @@ html {
     overflow: hidden;
 }
 
-/* Тёмный оверлей поверх картинки, чтобы текст читался */
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.45);   /* затемнение 45% */
+    background-color: rgba(0, 0, 0, 0.45);
     z-index: 0;
 }
 
 .hero-inner {
     position: relative;
-    z-index: 1;                     /* выше оверлея */
+    z-index: 1;
     max-width: 800px;
     padding: 2em;
 }
@@ -267,7 +272,6 @@ html {
     }
 }
 
-/* Адаптив */
 @media (max-width: 62em) {
     .hero {
         min-height: 380px;
@@ -369,25 +373,15 @@ html {
     line-height: 1.6;
 }
 
+/* --- Базовые списки в секциях: сбрасываем маркеры --- */
 .main section > ol,
 .main section > ul {
     list-style: none;
     padding-left: 0;
+    margin: 1em 0;
 }
 
-.main section > ol li {
-    margin-bottom: 0.6em;
-    line-height: 1.6;
-    padding-left: 1.6em;
-    position: relative;
-}
-
-.main section > ol li::before {
-    content: "✅ ";
-    position: absolute;
-    left: 0;
-}
-
+.main section > ol li,
 .main section > ul li {
     margin-bottom: 0.6em;
     line-height: 1.6;
@@ -395,10 +389,50 @@ html {
     position: relative;
 }
 
-.main section > ul li::before {
+/* --- Модификаторы вида --- */
+
+/* Галочки: <ul class="check"> или <ol class="check"> */
+.main section > ul.check li::before,
+.main section > ol.check li::before {
+    content: "✅ ";
+    position: absolute;
+    left: 0;
+}
+
+/* Крестики: <ul class="cross"> или <ol class="cross"> */
+.main section > ul.cross li::before,
+.main section > ol.cross li::before {
     content: "❌ ";
     position: absolute;
     left: 0;
+}
+
+/* Обычные маркеры-точки: <ul class="plain"> */
+.main section > ul.plain {
+    list-style: disc;
+    padding-left: 1.4em;
+}
+
+.main section > ul.plain li {
+    padding-left: 0;
+}
+
+.main section > ul.plain li::before {
+    content: none;
+}
+
+/* Нумерованный список: <ol class="plain"> */
+.main section > ol.plain {
+    list-style: decimal;
+    padding-left: 1.6em;
+}
+
+.main section > ol.plain li {
+    padding-left: 0;
+}
+
+.main section > ol.plain li::before {
+    content: none;
 }
 
 /* ================== САЙДБАР ================== */
@@ -497,19 +531,161 @@ html {
     font-size: 0.9em;
 }
 
-/* ================== СПИСКИ БЕЗ ГАЛОЧЕК/КРЕСТИКОВ ================== */
-.main section > ol.plain li::before,
-.main section > ul.plain li::before {
-    content: none;          /* убираем галочку/крестик */
+/* ================== ИНЛАЙНОВЫЙ КОД ================== */
+code {
+    background: #f0f0f0;
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.9em;
+    color: #37533ebc;
 }
 
-.main section > ol.plain,
-.main section > ul.plain {
-    list-style: disc;       /* возвращаем обычные маркеры */
-    padding-left: 1.4em;    /* отступ под маркер */
+/* ================== ТАБЛИЦЫ ================== */
+.pure-table.pure-table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
 }
 
-.main section > ol.plain li,
-.main section > ul.plain li {
-    padding-left: 0;        /* убираем отступ под кастомный ::before */
+.pure-table.pure-table-bordered th,
+.pure-table.pure-table-bordered td {
+    border: 1px solid #4eb87a;
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.pure-table.pure-table-bordered th {
+    background: #f5f5f5;
+    font-weight: 700;
+}
+
+.pure-table.pure-table-bordered code {
+    background: #f0f0f0;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+    .pure-table.pure-table-bordered {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* ================== АККОРДЕОН ГЛОССАРИЯ ================== */
+.glossary-item {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem 0.9rem;
+    background: #fff;
+    transition: background 0.2s ease;
+}
+
+.glossary-item[open] {
+    background: #f9f9f9;
+    border-color: #bbb;
+}
+
+.glossary-item summary {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.4rem 0;
+    list-style: none;
+    position: relative;
+    padding-right: 1.5rem;
+}
+
+.glossary-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.glossary-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 0.4rem;
+    font-weight: 700;
+    color: #4a7c59;
+    transition: transform 0.2s ease;
+}
+
+.glossary-item[open] summary::after {
+    content: "−";
+}
+
+.glossary-item p {
+    margin: 0.5rem 0 0.3rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.glossary-item code {
+    background: #f0f0f0;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* ================== ТАБЛИЦА СРАВНЕНИЯ ================== */
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+.compare-table th,
+.compare-table td {
+    border: 1px solid #ddd;
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.compare-table th {
+    background: #f5f5f5;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .compare-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* ================== БЛОКИ КОДА ================== */
+pre {
+    background: #779667b6;
+    border-left: 4px solid #256030de;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+pre code {
+    font-family: 'Courier New', Consolas, monospace;
+    color: #000000;
+    background: none;
+    padding: 0;
+}
+
+/* ================== ЗАГОЛОВКИ H3 В СЕКЦИЯХ ================== */
+.main h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+    color: #000000;
+    font-size: 1.15rem;
 }

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARD — Адаптивный и отзывчивый дизайн</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main/main.js" defer></script>
+</head>
+<body>
+
+    <!--База-->
+    <header class="custom-menu-wrapper">
+        <div class="pure-menu custom-menu custom-menu-top">
+            <a href="index.html" class="pure-menu-heading custom-menu-brand">
+                <img src="img/logo.png" alt="Логотип ARD" class="brand-logo">
+                <span class="brand-text">ARD</span>
+            </a>
+            <a href="#" class="custom-menu-toggle" id="toggle" aria-label="Открыть меню">
+                <s class="bar"></s><s class="bar"></s>
+            </a>
+        </div>
+        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu" aria-label="Основная навигация">
+            <div class="custom-menu-screen"></div>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                <li class="pure-menu-item"><a href="history.html" class="pure-menu-link">История</a></li>
+                <li class="pure-menu-item"><a href="adaptive.html" class="pure-menu-link">Адаптивный</a></li>
+                <li class="pure-menu-item"><a href="responsive.html" class="pure-menu-link">Отзывчивый</a></li>
+                <li class="pure-menu-item"><a href="comparison.html" class="pure-menu-link">Сравнение</a></li>
+                <li class="pure-menu-item"><a href="trends.html" class="pure-menu-link">Современные тренды</a></li>
+                <li class="pure-menu-item"><a href="tools.html" class="pure-menu-link">Инструменты</a></li>
+                <li class="pure-menu-item"><a href="mistakes.html" class="pure-menu-link">Ошибки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="layout">
+
+        <!-- Меню и основной контент-->
+        <main class="main">
+            <h1>Инструменты и практика</h1>
+            <p>
+                Все инструменты ниже — это именно инструменты <b>адаптивного и отзывчивого дизайна</b>,
+                а не вёрстки в целом. Для каждого указано, к какому подходу он относится в первую очередь.
+            </p>
+
+            <div class="page-info">
+                <h2>Что мы узнаем</h2>
+                <ul>
+                    <li><a href="#css">CSS-инструменты адаптивности</a></li>
+                    <li><a href="#devtools">Инструменты разработчика</a></li>
+                    <li><a href="#frameworks">Фреймворки и подходы</a></li>
+                    <li><a href="#testing">Тестирование адаптивности</a></li>
+                </ul>
+            </div>
+
+            <section id="css">
+                <h2>CSS-инструменты адаптивности</h2>
+                <p>
+                    Именно CSS отвечает за то, как интерфейс подстраивается под экран.
+                    Ниже — ключевые инструменты, разделённые по тому, какому подходу они служат.
+                </p>
+
+                <h3>Медиа-запросы (media queries) — для обоих подходов</h3>
+                <p>
+                    Базовый механизм и <b>адаптивного</b>, и <b>отзывчивого</b> дизайна.
+                    В отзывчивом они включают разные стили при изменении ширины экрана,
+                    в адаптивном — переключают целые макеты на брейкпоинтах.
+                </p>
+                <pre><code>@media (min-width: 768px) {
+    .container { max-width: 720px; }
+}</code></pre>
+
+                <h3>Функция clamp() — для отзывчивого подхода</h3>
+                <p>
+                    Инструмент именно <b>отзывчивого</b> дизайна: значение плавно меняется
+                    между минимумом и максимумом, без резких переключений на брейкпоинтах.
+                    Такой плавности адаптивный подход не даёт.
+                </p>
+                <pre><code>h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}</code></pre>
+
+                <h3>Flexbox — для обоих подходов</h3>
+                <p>
+                    Используется и в адаптивных, и в отзывчивых макетах. Позволяет строить
+                    «резиновые» одномерные раскладки: строка или колонка.
+                </p>
+                <pre><code>.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}</code></pre>
+
+                <h3>CSS Grid — для обоих подходов</h3>
+                <p>
+                    Двумерные сетки. В отзывчивом дизайне особенно ценна возможность
+                    <code>auto-fit</code> и <code>minmax()</code> — количество колонок
+                    меняется автоматически, без ручных брейкпоинтов.
+                </p>
+                <pre><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}</code></pre>
+
+                <h3>Container Queries — для современного отзывчивого подхода</h3>
+                <p>
+                    Новый уровень <b>отзывчивости</b>: компонент реагирует на размер
+                    <b>своего контейнера</b>, а не всего экрана. Это то, чего не мог дать
+                    классический адаптивный подход с его глобальными макетами.
+                </p>
+                <pre><code>@container (min-width: 400px) {
+    .card { display: flex; }
+}</code></pre>
+            </section>
+
+            <section id="devtools">
+                <h2>Инструменты разработчика</h2>
+                <p>
+                    Проверка адаптивности — обязательный этап. Инструменты ниже помогают
+                    увидеть, как интерфейс ведёт себя на разных устройствах.
+                </p>
+
+                <h3>DevTools в браузере</h3>
+                <p>
+                    Встроенные инструменты Chrome, Firefox, Safari и Edge — основной способ
+                    проверить <b>адаптивность и отзывчивость</b>:
+                </p>
+                <ul>
+                    <li>Режим эмуляции мобильных устройств</li>
+                    <li>Изменение ширины вьюпорта для проверки брейкпоинтов</li>
+                    <li>Просмотр активных медиа-запросов и container queries</li>
+                    <li>Проверка метрик производительности на мобильных</li>
+                </ul>
+
+                <h3>Эмуляция устройств</h3>
+                <p>
+                    Выбор конкретной модели телефона или планшета в DevTools.
+                    Удобно для быстрой проверки, но <b>не заменяет</b> тесты на реальных устройствах —
+                    особенно когда речь идёт о поведении адаптивного макета на нестандартных экранах.
+                </p>
+            </section>
+
+            <section id="frameworks">
+                <h2>Фреймворки и подходы</h2>
+                <p>
+                    Фреймворки дают готовые решения для адаптивности — сетки, утилиты, компоненты.
+                </p>
+
+                <h3>Bootstrap — для адаптивного подхода</h3>
+                <p>
+                    Классический CSS-фреймворк с готовой <b>адаптивной сеткой</b> и брейкпоинтами.
+                    Отлично подходит, когда нужен предсказуемый макет под конкретные разрешения.
+                </p>
+
+                <h3>Tailwind CSS — для отзывчивого подхода</h3>
+                <p>
+                    Utility-first подход: вы комбинируете маленькие классы-утилиты и задаёте
+                    поведение элемента на каждом брейкпоинте. Даёт больше гибкости для
+                    <b>отзывчивых</b> интерфейсов.
+                </p>
+                <pre><code>&lt;div class="w-full md:w-1/2 lg:w-1/3 p-4"&gt;...&lt;/div&gt;</code></pre>
+
+                <h3>Дизайн-токены — для обоих подходов</h3>
+                <p>
+                    Единые значения брейкпоинтов, отступов и шрифтов, хранящиеся в одном месте.
+                    Помогают поддерживать согласованность адаптивности на уровне всей дизайн-системы —
+                    независимо от того, адаптивный у вас подход или отзывчивый.
+                </p>
+            </section>
+
+            <section id="testing">
+                <h2>Тестирование адаптивности</h2>
+                <p>
+                    Хороший адаптивный или отзывчивый сайт — это тот, который проверен
+                    на реальных устройствах, а не только в эмуляторе.
+                </p>
+
+                <h3>Реальные устройства</h3>
+                <p>
+                    Самый надёжный способ проверить <b>адаптивность</b> — открыть сайт
+                    на настоящем телефоне, планшете и мониторе. Эмуляция не покажет
+                    реальную скорость, тач-жесты и поведение шрифтов.
+                </p>
+
+                <h3>BrowserStack и аналоги</h3>
+                <p>
+                    Сервисы доступа к сотням реальных устройств и браузеров.
+                    Особенно полезны, когда нужно проверить, как <b>адаптивный макет</b>
+                    ведёт себя на нестандартных разрешениях.
+                </p>
+
+                <h3>Can I use</h3>
+                <p>
+                    Справочник поддержки CSS- и JS-возможностей. Перед использованием
+                    нового инструмента адаптивности (например, Container Queries) стоит
+                    проверить, поддерживают ли его целевые браузеры.
+                </p>
+            </section>
+
+            <section>
+                <a href="index.html" class="hero-btn">Вернуться на главную</a>
+            </section>
+        </main>
+
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Описание страницы</h3>
+                <p>Инструменты адаптивного и отзывчивого дизайна — с привязкой к каждому подходу.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Совет дня</h3>
+                <p class="tip-of-day">Перед использованием новой CSS-возможности проверьте её поддержку на caniuse.com.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Web/CSS" target="_blank" rel="noopener noreferrer">MDN: CSS</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">Can I use</a></li>
+                    <li><a href="https://www.browserstack.com/" target="_blank" rel="noopener noreferrer">BrowserStack</a></li>
+                    <li><a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">Tailwind CSS</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!--Подвал-->
+    <footer class="site-footer">
+        <p>
+            Автор сайта:
+            <a href="mailto:alfiya.ziyatdinova@bk.ru">Зиятдинова Альфия</a>,
+            335 группа
+        </p>
+        <p>
+            <a href="https://vk.ru/mrs.alfiya" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </p>
+        <p>
+            Почта: <a href="mailto:alfiya.ziyatdinova@bk.ru">alfiya.ziyatdinova@bk.ru</a>
+        </p>
+        <p class="copyright">© 2026</p>
+    </footer>
+
+</body>
+</html>

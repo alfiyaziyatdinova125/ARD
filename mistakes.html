@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARD — Адаптивный и отзывчивый дизайн</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main/main.js" defer></script>
+</head>
+<body>
+
+    <!--База-->
+    <header class="custom-menu-wrapper">
+        <div class="pure-menu custom-menu custom-menu-top">
+            <a href="index.html" class="pure-menu-heading custom-menu-brand">
+                <img src="img/logo.png" alt="Логотип ARD" class="brand-logo">
+                <span class="brand-text">ARD</span>
+            </a>
+            <a href="#" class="custom-menu-toggle" id="toggle" aria-label="Открыть меню">
+                <s class="bar"></s><s class="bar"></s>
+            </a>
+        </div>
+        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu" aria-label="Основная навигация">
+            <div class="custom-menu-screen"></div>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Главная</a></li>
+                <li class="pure-menu-item"><a href="history.html" class="pure-menu-link">История</a></li>
+                <li class="pure-menu-item"><a href="adaptive.html" class="pure-menu-link">Адаптивный</a></li>
+                <li class="pure-menu-item"><a href="responsive.html" class="pure-menu-link">Отзывчивый</a></li>
+                <li class="pure-menu-item"><a href="comparison.html" class="pure-menu-link">Сравнение</a></li>
+                <li class="pure-menu-item"><a href="trends.html" class="pure-menu-link">Современные тренды</a></li>
+                <li class="pure-menu-item"><a href="tools.html" class="pure-menu-link">Инструменты</a></li>
+                <li class="pure-menu-item"><a href="mistakes.html" class="pure-menu-link">Ошибки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="layout">
+
+        <!-- Меню и основной контент-->
+        <main class="main">
+            <h1>Типичные ошибки</h1>
+            <p>
+                Эти ошибки встречаются именно в адаптивном и
+                отзывчивом дизайне — а не в вёрстке вообще.
+                Ниже — разбор самых частых грабель и того, как их избежать.
+            </p>
+
+            <div class="page-info">
+                <h2>Что мы узнаем</h2>
+                <ul>
+                    <li><a href="#scroll">Горизонтальная прокрутка</a></li>
+                    <li><a href="#text">Мелкий текст и кнопки</a></li>
+                    <li><a href="#motion">Игнорирование prefers-reduced-motion</a></li>
+                    <li><a href="#images">Десктопные изображения на телефоне</a></li>
+                    <li><a href="#gaps">«Мёртвые зоны» между брейкпоинтами</a></li>
+                    <li><a href="#pixels">Фиксированные размеры в пикселях</a></li>
+                </ul>
+            </div>
+
+            <section id="scroll">
+                <h2>1. Горизонтальная прокрутка на мобильных</h2>
+                <p>
+                    Прямая проблема <b>адаптивности</b>: интерфейс не подстроился под ширину
+                    экрана, и контент «вылезает» за край. Пользователь вынужден скроллить вбок.
+                </p>
+                <p><b>Причины:</b></p>
+                <ul>
+                    <li>Фиксированная ширина элемента больше ширины экрана</li>
+                    <li>Отрицательные отступы</li>
+                    <li>Изображения без <code>max-width: 100%</code></li>
+                    <li>Длинные слова или URL без переноса</li>
+                </ul>
+                <p><b>Как исправить:</b></p>
+                <pre><code>img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.long-word {
+    word-break: break-word;
+}</code></pre>
+            </section>
+
+            <section id="text">
+                <h2>2. Слишком мелкий текст и кнопки</h2>
+                <p>
+                    Ошибка <b>мобильной адаптации</b>: интерфейс технически подстроился под экран,
+                    но остался неудобным. Мелкий шрифт и кнопки меньше 44×44 px делают сайт
+                    практически непригодным на телефоне.
+                </p>
+                <p><b>Рекомендации:</b></p>
+                <ul>
+                    <li>Минимальный размер шрифта основного текста — <b>16px</b></li>
+                    <li>Размер кнопок — не меньше <b>44×44 px</b></li>
+                    <li>Расстояние между кликабельными элементами — минимум 8 px</li>
+                </ul>
+                <pre><code>button {
+    min-height: 44px;
+    min-width: 44px;
+    font-size: 1rem;
+}</code></pre>
+            </section>
+
+            <section id="motion">
+                <h2>3. Игнорирование prefers-reduced-motion</h2>
+                <p>
+                    Ошибка <b>отзывчивости</b>: интерфейс не реагирует на предпочтения пользователя.
+                    Многие страдают от головокружения при виде анимаций, и в системе есть
+                    настройка «уменьшить движение».
+                </p>
+                <p><b>Как исправить:</b></p>
+                <pre><code>@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}</code></pre>
+                <p>
+                    Это простой способ сделать адаптивность не только под экран,
+                    но и под состояние пользователя.
+                </p>
+            </section>
+
+            <section id="images">
+                <h2>4. Загрузка десктопных изображений на телефон</h2>
+                <p>
+                    Ошибка <b>адаптации ресурсов</b>: на мобильном грузится картинка,
+                    рассчитанная на большой монитор. Лишние мегабайты трафика и медленная загрузка.
+                </p>
+                <p><b>Как исправить — использовать srcset и sizes:</b></p>
+                <pre><code>&lt;img src="img/photo-960.jpg"
+     srcset="img/photo-480.jpg 480w,
+             img/photo-960.jpg 960w,
+             img/photo-1440.jpg 1440w"
+     sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 70vw,
+            800px"
+     alt="Описание"&gt;</code></pre>
+                <p>
+                    Браузер сам выберет подходящий размер изображения в зависимости от
+                    ширины экрана и плотности пикселей.
+                </p>
+            </section>
+
+            <section id="gaps">
+                <h2>5. «Мёртвые зоны» между брейкпоинтами</h2>
+                <p>
+                    Классическая проблема именно <b>адаптивного</b> подхода: макет предусмотрен
+                    для 320 px и для 768 px, но что происходит на 600 px — не продумано.
+                    В итоге на промежуточных разрешениях интерфейс выглядит сломанным.
+                </p>
+                <p><b>Как избежать:</b></p>
+                <ul>
+                    <li>Использовать <b>fluid-вёрстку</b> внутри брейкпоинтов</li>
+                    <li>Применять <code>clamp()</code> для шрифтов и отступов</li>
+                    <li>Проверять макет на промежуточных разрешениях, а не только на «стандартных»</li>
+                    <li>Использовать <b>Container Queries</b> вместо глобальных медиа-запросов</li>
+                </ul>
+                <p>
+                    По сути, «мёртвые зоны» — это аргумент в пользу <b>отзывчивого</b> подхода:
+                    он не оставляет таких провалов, потому что макет плавно тянется.
+                </p>
+            </section>
+
+            <section id="pixels">
+                <h2>6. Фиксированные размеры в пикселях</h2>
+                <p>
+                    Причина неадаптивности как таковой. Когда ширина, отступы и шрифты
+                    заданы только в пикселях, макет «ломается» при малейшем изменении
+                    экрана или пользовательских настроек.
+                </p>
+                <p><b>Плохо:</b></p>
+                <pre><code>.container {
+    width: 960px;
+    padding: 40px;
+    font-size: 18px;
+}</code></pre>
+                <p><b>Хорошо:</b></p>
+                <pre><code>.container {
+    max-width: 60rem;
+    padding: clamp(1rem, 3vw, 2.5rem);
+    font-size: clamp(1rem, 0.5rem + 1vw, 1.25rem);
+}</code></pre>
+                <p>
+                    Смешивание <code>rem</code>, <code>%</code>, <code>vw</code> и <code>clamp()</code>
+                    делает вёрстку гибкой и уважает пользовательские настройки размера шрифта.
+                    Это признак <b>отзывчивого</b> подхода.
+                </p>
+            </section>
+
+            <section>
+                <a href="index.html" class="hero-btn">Вернуться на главную</a>
+            </section>
+        </main>
+
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Описание страницы</h3>
+                <p>Типичные ошибки адаптивного и отзывчивого дизайна — с привязкой к каждому подходу.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Совет дня</h3>
+                <p class="tip-of-day">Проверяйте сайт не только в DevTools, но и на реальных устройствах — эмуляция не всегда показывает реальные проблемы.</p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://web.dev/articles/prefers-reduced-motion" target="_blank" rel="noopener noreferrer">web.dev: prefers-reduced-motion</a></li>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images" target="_blank" rel="noopener noreferrer">MDN: адаптивные изображения</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">Can I use</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!--Подвал-->
+    <footer class="site-footer">
+        <p>
+            Автор сайта:
+            <a href="mailto:alfiya.ziyatdinova@bk.ru">Зиятдинова Альфия</a>,
+            335 группа
+        </p>
+        <p>
+            <a href="https://vk.ru/mrs.alfiya" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </p>
+        <p>
+            Почта: <a href="mailto:alfiya.ziyatdinova@bk.ru">alfiya.ziyatdinova@bk.ru</a>
+        </p>
+        <p class="copyright">© 2026</p>
+    </footer>
+
+</body>
+</html>
