@@ -40,3 +40,43 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 })(this, this.document);
 
+/* ================== КАРУСЕЛЬ КАРТОЧЕК НА ГЛАВНОЙ ================== */
+document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.querySelector('.cards-slider');
+    if (!slider) return;
+
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    if (!prevBtn || !nextBtn) return;
+
+    // Ширина одной карточки + gap между ними (300px + 1.2em ≈ 320px)
+    // Можно посчитать динамически, но 320px — универсально для карточек 300px
+    function getCardWidth() {
+        const card = slider.querySelector('.preview-card');
+        if (!card) return 320;
+        const style = window.getComputedStyle(slider);
+        const gap = parseFloat(style.gap) || 19;
+        return card.offsetWidth + gap;
+    }
+
+    // Прокрутка вперёд/назад на одну карточку
+    prevBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    });
+
+    // Обновление состояния кнопок (disabled на краях)
+    function updateButtons() {
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        prevBtn.disabled = slider.scrollLeft <= 5;
+        nextBtn.disabled = slider.scrollLeft >= maxScroll - 5;
+    }
+
+    slider.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
+    updateButtons(); // проверка при загрузке
+});
+
