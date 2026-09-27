@@ -735,50 +735,7 @@ pre code {
 .cards-slider-wrapper h2 {
     border-bottom: 2px solid #4d8a56;
     padding-bottom: 0.3em;
-    margin-bottom: 0.8em;
-}
-
-/* Кнопки-стрелки */
-.cards-slider-controls {
-    display: flex;
-    gap: 0.5em;
-    justify-content: flex-end;
-    margin-bottom: 0.8em;
-}
-
-.slider-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background-color: #4d8a56;
-    color: #ffffff;
-    font-size: 1.1em;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    user-select: none;
-    font-family: inherit;
-}
-
-.slider-btn:hover {
-    background-color: #3d6e44;
-    transform: scale(1.08);
-}
-
-.slider-btn:active {
-    transform: scale(0.95);
-}
-
-.slider-btn:disabled {
-    background-color: #a0b8a5;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+    margin-bottom: 0.8em;      /* было 0.8em, но добавь проверку — это отступ от заголовка до карточек */
 }
 
 /* Сам слайдер */
@@ -788,28 +745,17 @@ pre code {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    padding: 0.5em 0 1em;
+    padding: 0;                 /* ← убрали верхний padding 0.5em */
+    margin: 0;                  /* ← убрали возможные margin */
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #4d8a56 rgba(0, 0, 0, 0.08);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .cards-slider::-webkit-scrollbar {
-    height: 8px;
-}
-
-.cards-slider::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.06);
-    border-radius: 4px;
-}
-
-.cards-slider::-webkit-scrollbar-thumb {
-    background: #4d8a56;
-    border-radius: 4px;
-}
-
-.cards-slider::-webkit-scrollbar-thumb:hover {
-    background: #3d6e44;
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 /* Карточка внутри слайдера */
@@ -850,6 +796,51 @@ pre code {
     align-self: flex-start;
 }
 
+/* Кнопки-стрелки — внизу, по центру */
+.cards-slider-controls {
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;    /* ← центрируем стрелки */
+    margin-top: 0.8em;
+    margin-bottom: 0;
+}
+
+.slider-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #4d8a56;
+    color: #ffffff;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    user-select: none;
+    font-family: inherit;
+}
+
+.slider-btn:hover {
+    background-color: #3d6e44;
+    transform: scale(1.08);
+}
+
+.slider-btn:active {
+    transform: scale(0.95);
+}
+
+.slider-btn:disabled {
+    background-color: #a0b8a5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Адаптив */
 @media (max-width: 40em) {
     .preview-card {
         flex: 0 0 85%;
@@ -860,7 +851,35 @@ pre code {
         text-align: center;
         box-sizing: border-box;
     }
-    .cards-slider-controls {
-        justify-content: center;
+}
+
+/* ================== АДАПТИВНОЕ ВИДЕО ================== */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16 / 9;
+    margin: 1.5em 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    background-color: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* Фолбэк для старых браузеров */
+@supports not (aspect-ratio: 16 / 9) {
+    .video-wrapper {
+        height: 0;
+        padding-bottom: 56.25%;
     }
 }
